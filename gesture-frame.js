@@ -20,8 +20,7 @@ const cachedComputedStyle = (element) => {
 };
 const accumulateInverseCssZoom = CSS.supports("zoom", "1") ? (element) => {
   let zoom = 1;
-  for (; element; element = element.parentElement)
-    zoom *= cachedComputedStyle(element).zoom;
+  for (; element; element = element.parentElement) zoom *= cachedComputedStyle(element).zoom;
   return 1 / zoom;
 } : () => 1;
 class ScrollableFrame extends HTMLElement {
