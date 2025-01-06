@@ -412,7 +412,7 @@ export class GestureFrame extends ScrollableFrame {
         (event: WheelEvent) => {
           if (this.#pinchZoom && event.ctrlKey) {
             event.preventDefault();
-            scaleRatio *= 0.99 ** event.deltaY;
+            scaleRatio *= this.wheelEventScale(event);
             ({ clientX, clientY } = event);
             reserveZooming();
           }
@@ -491,6 +491,10 @@ export class GestureFrame extends ScrollableFrame {
         }
       });
     }
+  }
+
+  wheelEventScale(wheelEvent: WheelEvent): number {
+    return clamp(1 - wheelEvent.deltaY * 0.01, 0.8, 1.25);
   }
 }
 

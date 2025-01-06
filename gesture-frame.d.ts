@@ -66,5 +66,6 @@ export declare class GestureFrame extends ScrollableFrame {
     disconnectedCallback(): void;
     attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null): void;
     constructor();
+    wheelEventScale(wheelEvent: WheelEvent): number;
 }
 export {};
